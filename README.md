@@ -6,7 +6,7 @@ My Android Studio Device Emulator runs on an API 33, as that is the minimum for 
 
 Download and import the unzipped repository into Android Studio and run the app on your emulator of choice.
 
-### References
+## References
 
 [Android Documentation](https://developer.android.com/reference/android/widget/SeekBar.OnSeekBarChangeListener) helps at times with Android design tools.
 
