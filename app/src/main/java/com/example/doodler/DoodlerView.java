@@ -29,6 +29,7 @@ public class DoodlerView extends View {
     private Bitmap mBitmap;
     private Canvas mCanvas;
     private Paint mBitmapPaint = new Paint(Paint.DITHER_FLAG);
+    private ArrayList<DrawStroke> stack = new ArrayList<>();
 
     public DoodlerView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -133,5 +134,15 @@ public class DoodlerView extends View {
         }
 
         return true;
+    }
+
+    public void undo() {
+        DrawStroke last = paths.remove(paths.size() - 1);
+        stack.add(last);
+    }
+
+    public void redo() {
+        DrawStroke last = stack.remove(stack.size() - 1);
+        paths.add(last);
     }
 }

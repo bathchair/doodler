@@ -7,11 +7,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
-
-import java.sql.Array;
 import java.util.ArrayList;
-
-import top.defaults.colorpicker.ColorPickerPopup;
 
 
 public class Controller extends AppCompatActivity {
@@ -72,29 +68,24 @@ public class Controller extends AppCompatActivity {
                 changeColor(v, colors.get(colorIndex));
             }
         });
-    }
 
-//    void popup(View v) {
-//        new ColorPickerPopup.Builder(Controller.this)
-//                .initialColor(colorSelected)
-//                .enableBrightness(true)
-//                .enableAlpha(true)
-//                .okTitle("OK")
-//                .cancelTitle("Cancel")
-//                .showIndicator(true)
-//                .showValue(false)
-//                .onlyUpdateOnTouchEventUp(true)
-//                .build()
-//                .show(new ColorPickerPopup.ColorPickerObserver() {
-//                            @Override
-//                            public void
-//                            onColorPicked(int color) {
-//                                changeColor(color);
-//                                colorSelected = color;
-//                                mColorPreview.setBackgroundColor(colorSelected);
-//                            }
-//                        });
-//    }
+        Button undoButton = (Button) findViewById(R.id.button_undo);
+        undoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doodlerView.undo();
+            }
+        });
+
+        Button redoButton = (Button) findViewById(R.id.button_redo);
+        redoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doodlerView.redo();
+            }
+        });
+
+    }
 
     public void changeSize(int width) {
         doodlerView.changeStrokeWidth(width);
